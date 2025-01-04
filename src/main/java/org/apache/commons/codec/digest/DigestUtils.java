@@ -198,7 +198,7 @@ public class DigestUtils {
      * @see MessageDigestAlgorithms#MD5
      */
     public static MessageDigest getMd5Digest() {
-        return getDigest(MessageDigestAlgorithms.MD5);
+        return getDigest(MessageDigestAlgorithms.MD5); // NOSONAR: MD5 is acceptable here
     }
 
     /**
@@ -224,7 +224,7 @@ public class DigestUtils {
      * @since 1.7
      */
     public static MessageDigest getSha1Digest() {
-        return getDigest(MessageDigestAlgorithms.SHA_1);
+        return getDigest(MessageDigestAlgorithms.SHA_1); // NOSONAR: SHA_1 is acceptable here
     }
 
     /**
@@ -428,7 +428,7 @@ public class DigestUtils {
      * @return MD5 digest
      */
     public static byte[] md5(final byte[] data) {
-        return getMd5Digest().digest(data);
+        return getMd5Digest().digest(data); // NOSONAR: MD5 is acceptable here
     }
 
     /**
@@ -440,7 +440,7 @@ public class DigestUtils {
      * @since 1.4
      */
     public static byte[] md5(final InputStream data) throws IOException {
-        return digest(getMd5Digest(), data);
+        return digest(getMd5Digest(), data); // NOSONAR: MD5 is acceptable here
     }
 
     /**
