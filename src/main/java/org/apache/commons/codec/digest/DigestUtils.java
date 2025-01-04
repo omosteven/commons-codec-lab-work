@@ -187,7 +187,7 @@ public class DigestUtils {
      * @since 1.7
      */
     public static MessageDigest getMd2Digest() {
-        return getDigest(MessageDigestAlgorithms.MD2);
+        return getDigest(MessageDigestAlgorithms.MD2); // NOSONAR: MD2 is acceptable here
     }
 
     /**
@@ -361,7 +361,7 @@ public class DigestUtils {
      * @since 1.7
      */
     public static byte[] md2(final byte[] data) {
-        return getMd2Digest().digest(data);
+        return getMd2Digest().digest(data); // NOSONAR: MD2 is acceptable here
     }
 
     /**
@@ -373,7 +373,7 @@ public class DigestUtils {
      * @since 1.7
      */
     public static byte[] md2(final InputStream data) throws IOException {
-        return digest(getMd2Digest(), data);
+        return digest(getMd2Digest(), data); // NOSONAR: MD2 is acceptable here
     }
 
     /**
@@ -384,7 +384,7 @@ public class DigestUtils {
      * @since 1.7
      */
     public static byte[] md2(final String data) {
-        return md2(StringUtils.getBytesUtf8(data));
+        return md2(StringUtils.getBytesUtf8(data)); // NOSONAR: MD2 is acceptable here
     }
 
     /**
@@ -395,7 +395,7 @@ public class DigestUtils {
      * @since 1.7
      */
     public static String md2Hex(final byte[] data) {
-        return Hex.encodeHexString(md2(data));
+        return Hex.encodeHexString(md2(data)); // NOSONAR: MD2 is acceptable here
     }
 
     /**
@@ -407,7 +407,7 @@ public class DigestUtils {
      * @since 1.7
      */
     public static String md2Hex(final InputStream data) throws IOException {
-        return Hex.encodeHexString(md2(data));
+        return Hex.encodeHexString(md2(data)); // NOSONAR: MD2 is acceptable here
     }
 
     /**
@@ -418,7 +418,7 @@ public class DigestUtils {
      * @since 1.7
      */
     public static String md2Hex(final String data) {
-        return Hex.encodeHexString(md2(data));
+        return Hex.encodeHexString(md2(data)); // NOSONAR: MD2 is acceptable here
     }
 
     /**
@@ -450,7 +450,7 @@ public class DigestUtils {
      * @return MD5 digest
      */
     public static byte[] md5(final String data) {
-        return md5(StringUtils.getBytesUtf8(data));
+        return md5(StringUtils.getBytesUtf8(data)); // NOSONAR: MD5 is acceptable here
     }
 
     /**
@@ -460,7 +460,7 @@ public class DigestUtils {
      * @return MD5 digest as a hexadecimal string
      */
     public static String md5Hex(final byte[] data) {
-        return Hex.encodeHexString(md5(data));
+        return Hex.encodeHexString(md5(data)); // NOSONAR: MD5 is acceptable here
     }
 
     /**
@@ -472,7 +472,7 @@ public class DigestUtils {
      * @since 1.4
      */
     public static String md5Hex(final InputStream data) throws IOException {
-        return Hex.encodeHexString(md5(data));
+        return Hex.encodeHexString(md5(data)); // NOSONAR: MD5 is acceptable here
     }
 
     /**
@@ -482,7 +482,7 @@ public class DigestUtils {
      * @return MD5 digest as a hexadecimal string
      */
     public static String md5Hex(final String data) {
-        return Hex.encodeHexString(md5(data));
+        return Hex.encodeHexString(md5(data)); // NOSONAR: MD5 is acceptable here
     }
 
     /**
@@ -494,7 +494,7 @@ public class DigestUtils {
      */
     @Deprecated
     public static byte[] sha(final byte[] data) {
-        return sha1(data);
+        return sha1(data); // NOSONAR: sha1 is acceptable here
     }
 
     /**
@@ -508,7 +508,7 @@ public class DigestUtils {
      */
     @Deprecated
     public static byte[] sha(final InputStream data) throws IOException {
-        return sha1(data);
+        return sha1(data); // NOSONAR: sha1 is acceptable here
     }
 
     /**
@@ -520,7 +520,7 @@ public class DigestUtils {
      */
     @Deprecated
     public static byte[] sha(final String data) {
-        return sha1(data);
+        return sha1(data); // NOSONAR: sha1 is acceptable here
     }
 
     /**
@@ -553,7 +553,7 @@ public class DigestUtils {
      * @return SHA-1 digest
      */
     public static byte[] sha1(final String data) {
-        return sha1(StringUtils.getBytesUtf8(data));
+        return sha1(StringUtils.getBytesUtf8(data)); // NOSONAR: sha1 is acceptable here
     }
 
     /**
@@ -564,7 +564,7 @@ public class DigestUtils {
      * @since 1.7
      */
     public static String sha1Hex(final byte[] data) {
-        return Hex.encodeHexString(sha1(data));
+        return Hex.encodeHexString(sha1(data)); // NOSONAR: sha1 is acceptable here
     }
 
     /**
@@ -576,7 +576,7 @@ public class DigestUtils {
      * @since 1.7
      */
     public static String sha1Hex(final InputStream data) throws IOException {
-        return Hex.encodeHexString(sha1(data));
+        return Hex.encodeHexString(sha1(data)); // NOSONAR: sha1 is acceptable here
     }
 
     /**
@@ -587,7 +587,7 @@ public class DigestUtils {
      * @since 1.7
      */
     public static String sha1Hex(final String data) {
-        return Hex.encodeHexString(sha1(data));
+        return Hex.encodeHexString(sha1(data)); // NOSONAR: sha1 is acceptable here
     }
 
     /**
