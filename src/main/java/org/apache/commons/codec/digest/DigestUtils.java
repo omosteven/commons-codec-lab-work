@@ -1211,7 +1211,7 @@ public class DigestUtils {
      */
     @Deprecated
     public static String shaHex(final byte[] data) {
-        return sha1Hex(data);
+        return sha1Hex(data); // NOSONAR: sha1Hex is acceptable here
     }
 
     /**
@@ -1225,7 +1225,7 @@ public class DigestUtils {
      */
     @Deprecated
     public static String shaHex(final InputStream data) throws IOException {
-        return sha1Hex(data);
+        return sha1Hex(data); // NOSONAR: sha1Hex is acceptable here
     }
 
     /**
@@ -1237,7 +1237,7 @@ public class DigestUtils {
      */
     @Deprecated
     public static String shaHex(final String data) {
-        return sha1Hex(data);
+        return sha1Hex(data); // NOSONAR: sha1Hex is acceptable here
     }
 
     /**
