@@ -339,7 +339,7 @@ public class DigestUtils {
      */
     @Deprecated
     public static MessageDigest getShaDigest() {
-        return getSha1Digest();
+        return getSha256Digest();
     }
 
     /**
@@ -531,7 +531,7 @@ public class DigestUtils {
      * @since 1.7
      */
     public static byte[] sha1(final byte[] data) {
-        return getSha1Digest().digest(data);
+        return getSha256Digest().digest(data);
     }
 
     /**
@@ -543,7 +543,7 @@ public class DigestUtils {
      * @since 1.7
      */
     public static byte[] sha1(final InputStream data) throws IOException {
-        return digest(getSha1Digest(), data);
+        return digest(getSha256Digest(), data);
     }
 
     /**
