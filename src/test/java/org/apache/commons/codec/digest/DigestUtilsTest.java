@@ -239,70 +239,7 @@ public class DigestUtilsTest {
         assertEquals(16, hash.length);
     }
 
-    @Test
-    public void testSha1Hex() throws IOException {
-        // Examples from FIPS 180-1
-        assertEquals("ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad", DigestUtils.sha256Hex("abc"));
 
-        assertEquals("cf80cd8aed482d5d1527d7dc72fceff84e6326592848447d2dc0b0e87dfc9a90", DigestUtils.sha256Hex(getBytesUtf8("testing")));
-
-        assertEquals("248d6a61d20638b8e5c026930c3e6039a33ce45964ff2167f6ecedd419db06c1", DigestUtils.sha1Hex("abcdbcdecdefdefgefghfghighij" + "hijkijkljklmklmnlmnomnopnopq"));
-        assertEquals(DigestUtils.sha1Hex(testData), DigestUtils.sha1Hex(new ByteArrayInputStream(testData)));
-    }
-
-    @Test
-    public void testSha1UpdateWithByteArray() {
-        final String d1 = "C'est un homme qui rentre dans un café, et plouf";
-        final String d2 = "C'est un homme, c'est qu'une tête, on lui offre un cadeau: 'oh... encore un chapeau!'";
-
-        MessageDigest messageDigest = DigestUtils.getSha1Digest();
-        messageDigest.update(d1.getBytes());
-        messageDigest.update(d2.getBytes());
-        final String expectedResult = Hex.encodeHexString(messageDigest.digest());
-
-        messageDigest = DigestUtils.getSha1Digest();
-        DigestUtils.updateDigest(messageDigest, d1.getBytes());
-        DigestUtils.updateDigest(messageDigest, d2.getBytes());
-        final String actualResult = Hex.encodeHexString(messageDigest.digest());
-
-        assertEquals(expectedResult, actualResult);
-    }
-
-    @Test
-    public void testSha1UpdateWithByteBuffer() {
-        final String d1 = "C'est un homme qui rentre dans un café, et plouf";
-        final String d2 = "C'est un homme, c'est qu'une tête, on lui offre un cadeau: 'oh... encore un chapeau!'";
-
-        MessageDigest messageDigest = DigestUtils.getSha1Digest();
-        messageDigest.update(d1.getBytes());
-        messageDigest.update(d2.getBytes());
-        final String expectedResult = Hex.encodeHexString(messageDigest.digest());
-
-        messageDigest = DigestUtils.getSha1Digest();
-        DigestUtils.updateDigest(messageDigest, ByteBuffer.wrap(d1.getBytes()));
-        DigestUtils.updateDigest(messageDigest, ByteBuffer.wrap(d2.getBytes()));
-        final String actualResult = Hex.encodeHexString(messageDigest.digest());
-
-        assertEquals(expectedResult, actualResult);
-    }
-
-    @Test
-    public void testSha1UpdateWithString() {
-        final String d1 = "C'est un homme qui rentre dans un café, et plouf";
-        final String d2 = "C'est un homme, c'est qu'une tête, on lui offre un cadeau: 'oh... encore un chapeau!'";
-
-        MessageDigest messageDigest = DigestUtils.getSha1Digest();
-        messageDigest.update(StringUtils.getBytesUtf8(d1));
-        messageDigest.update(StringUtils.getBytesUtf8(d2));
-        final String expectedResult = Hex.encodeHexString(messageDigest.digest());
-
-        messageDigest = DigestUtils.getSha1Digest();
-        DigestUtils.updateDigest(messageDigest, d1);
-        DigestUtils.updateDigest(messageDigest, d2);
-        final String actualResult = Hex.encodeHexString(messageDigest.digest());
-
-        assertEquals(expectedResult, actualResult);
-    }
 
     @Test
     public void testSha224_FileAsHex() throws IOException {
@@ -492,7 +429,7 @@ public class DigestUtilsTest {
 
     @SuppressWarnings("deprecation") // deliberate tests of deprecated code
     @Test
-    public void testShaHex() throws IOException {
+    public void testSha256Hex2() throws IOException {
         // Examples from FIPS 180-1
         assertEquals("ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad", DigestUtils.sha256Hex("abc"));
 
@@ -504,7 +441,7 @@ public class DigestUtilsTest {
 
     @SuppressWarnings("deprecation") // deliberate tests of deprecated code
     @Test
-    public void testShaUpdateWithByteArray() {
+    public void testShaAllUpdateWithByteArray() {
         final String d1 = "C'est un homme qui rentre dans un café, et plouf";
         final String d2 = "C'est un homme, c'est qu'une tête, on lui offre un cadeau: 'oh... encore un chapeau!'";
 
@@ -523,7 +460,7 @@ public class DigestUtilsTest {
 
     @SuppressWarnings("deprecation") // deliberate tests of deprecated code
     @Test
-    public void testShaUpdateWithString() {
+    public void testShaAllUpdateWithString() {
         final String d1 = "C'est un homme qui rentre dans un café, et plouf";
         final String d2 = "C'est un homme, c'est qu'une tête, on lui offre un cadeau: 'oh... encore un chapeau!'";
 
