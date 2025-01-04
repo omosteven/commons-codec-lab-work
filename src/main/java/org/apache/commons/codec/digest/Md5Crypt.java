@@ -297,7 +297,7 @@ public class Md5Crypt {
         }
         final byte[] saltBytes = saltString.getBytes(StandardCharsets.UTF_8);
 
-        final MessageDigest ctx = DigestUtils.getMd5Digest();
+        final MessageDigest ctx = DigestUtils.getMd5Digest(); // NOSONAR: MD5 is acceptable here
 
         /*
          * The password first, since that is what is most unknown
@@ -317,7 +317,7 @@ public class Md5Crypt {
         /*
          * Then just as many characters of the MD5(pw,salt,pw)
          */
-        MessageDigest ctx1 = DigestUtils.getMd5Digest();
+        MessageDigest ctx1 = DigestUtils.getMd5Digest(); // NOSONAR: MD5 is acceptable here
         ctx1.update(keyBytes);
         ctx1.update(saltBytes);
         ctx1.update(keyBytes);
@@ -358,7 +358,7 @@ public class Md5Crypt {
          * would need 30 seconds to build a 1000 entry dictionary...
          */
         for (int i = 0; i < ROUNDS; i++) {
-            ctx1 = DigestUtils.getMd5Digest();
+            ctx1 = DigestUtils.getMd5Digest(); // NOSONAR: MD5 is acceptable here
             if ((i & 1) != 0) {
                 ctx1.update(keyBytes);
             } else {
