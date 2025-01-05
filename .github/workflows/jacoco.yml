@@ -41,7 +41,7 @@ jobs:
 
       # Add JaCoCo report generation step here
       - name: Generate JaCoCo report
-        run: mvn clean test jacoco:report
+        run: mvn -Drat.skip=true clean test jacoco:report
 
       # Upload JaCoCo HTML report with unique name
       - name: Upload JaCoCo HTML report
