@@ -1,0 +1,36 @@
+name: Generate JaCoCo Report
+
+on:
+  push:
+    branches:
+      - main  # Adjust to your branch name
+  pull_request:
+    branches:
+      - main  # Adjust to your branch name
+
+jobs:
+  jacoco-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Set up Java environment with the correct version
+      - name: Set up JDK ${{ matrix.java }}
+      - uses: actions/setup-java@7a6d8a8234af8eb26422e24e3006232cccaa061b # v4.6.0
+        with:
+          distribution: 'temurin'
+          java-version: '17'  # Change based on your Java version
+
+      # Build and generate JaCoCo report
+      - name: Generate JaCoCo report
+        run: mvn clean test jacoco:report
+
+      # Upload JaCoCo HTML report as an artifact
+      - name: Upload JaCoCo HTML report
+        uses: actions/upload-artifact@v2
+        with:
+          name: jacoco-report
+          path: target/site/jacoco/index.html

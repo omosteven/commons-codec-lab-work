@@ -118,6 +118,19 @@ limitations under the License.
     <pluginManagement>
       <plugins>
         <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>0.8.7</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>prepare-agent</goal>
+                <goal>report</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.3.0</version>
@@ -148,7 +161,7 @@ limitations under the License.
             <includeTestSourceDirectory>true</includeTestSourceDirectory>
             <resourceExcludes>NOTICE.txt,LICENSE.txt,**/pom.properties,**/sha512.properties</resourceExcludes>
           </configuration>
-        </plugin>        
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
@@ -161,6 +174,8 @@ limitations under the License.
             <exclude>src/test/resources/org/apache/commons/codec/bla.tar.xz</exclude>
             <exclude>src/test/resources/org/apache/commons/codec/empty.bin</exclude>
             <exclude>src/test/resources/org/apache/commons/codec/small.bin</exclude>
+            <exclude>Dockerfile</exclude>
+            <exclude>.dockerignore</exclude>
           </excludes>
         </configuration>
       </plugin>
