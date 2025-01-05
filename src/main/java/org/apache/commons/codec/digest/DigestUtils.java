@@ -330,14 +330,6 @@ public class DigestUtils {
         return getDigest(MessageDigestAlgorithms.SHA_512);
     }
 
-    /**
-     * Gets an SHA-1 digest.
-     *
-     * @return An SHA-1 digest instance.
-     * @throws IllegalArgumentException when a {@link NoSuchAlgorithmException} is caught
-     * @deprecated (1.11) Use {@link #getSha1Digest()}
-     */
-    @Deprecated
     public static MessageDigest getShaDigest() {
         return getSha256Digest();
     }
@@ -485,40 +477,14 @@ public class DigestUtils {
         return Hex.encodeHexString(md5(data)); // NOSONAR: MD5 is acceptable here
     }
 
-    /**
-     * Calculates the SHA-1 digest and returns the value as a {@code byte[]}.
-     *
-     * @param data Data to digest
-     * @return SHA-1 digest
-     * @deprecated (1.11) Use {@link #sha1(byte[])}
-     */
-    @Deprecated
     public static byte[] sha(final byte[] data) {
         return sha1(data); // NOSONAR: sha1 is acceptable here
     }
 
-    /**
-     * Calculates the SHA-1 digest and returns the value as a {@code byte[]}.
-     *
-     * @param data Data to digest
-     * @return SHA-1 digest
-     * @throws IOException On error reading from the stream
-     * @since 1.4
-     * @deprecated (1.11) Use {@link #sha1(InputStream)}
-     */
-    @Deprecated
     public static byte[] sha(final InputStream data) throws IOException {
         return sha1(data); // NOSONAR: sha1 is acceptable here
     }
 
-    /**
-     * Calculates the SHA-1 digest and returns the value as a {@code byte[]}.
-     *
-     * @param data Data to digest
-     * @return SHA-1 digest
-     * @deprecated (1.11) Use {@link #sha1(String)}
-     */
-    @Deprecated
     public static byte[] sha(final String data) {
         return sha1(data); // NOSONAR: sha1 is acceptable here
     }
@@ -1202,40 +1168,12 @@ public class DigestUtils {
         return Hex.encodeHexString(sha512(data));
     }
 
-    /**
-     * Calculates the SHA-1 digest and returns the value as a hexadecimal string.
-     *
-     * @param data Data to digest
-     * @return SHA-1 digest as a hexadecimal string
-     * @deprecated (1.11) Use {@link #sha1Hex(byte[])}
-     */
-    @Deprecated
     public static String shaHex(final byte[] data) {
         return sha1Hex(data); // NOSONAR: sha1Hex is acceptable here
     }
-
-    /**
-     * Calculates the SHA-1 digest and returns the value as a hexadecimal string.
-     *
-     * @param data Data to digest
-     * @return SHA-1 digest as a hexadecimal string
-     * @throws IOException On error reading from the stream
-     * @since 1.4
-     * @deprecated (1.11) Use {@link #sha1Hex(InputStream)}
-     */
-    @Deprecated
     public static String shaHex(final InputStream data) throws IOException {
         return sha1Hex(data); // NOSONAR: sha1Hex is acceptable here
     }
-
-    /**
-     * Calculates the SHA-1 digest and returns the value as a hexadecimal string.
-     *
-     * @param data Data to digest
-     * @return SHA-1 digest as a hexadecimal string
-     * @deprecated (1.11) Use {@link #sha1Hex(String)}
-     */
-    @Deprecated
     public static String shaHex(final String data) {
         return sha1Hex(data); // NOSONAR: sha1Hex is acceptable here
     }
@@ -1371,12 +1309,6 @@ public class DigestUtils {
 
     private final MessageDigest messageDigest;
 
-    /**
-     * Preserves binary compatibility only. As for previous versions does not provide useful behavior
-     *
-     * @deprecated since 1.11; only useful to preserve binary compatibility
-     */
-    @Deprecated
     public DigestUtils() {
         this.messageDigest = null;
     }

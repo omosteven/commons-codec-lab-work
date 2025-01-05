@@ -27,7 +27,6 @@ import java.util.Comparator;
  * <p>This class is immutable and thread-safe.</p>
  */
 @SuppressWarnings("rawtypes")
-// TODO ought to implement Comparator<String> but that's not possible whilst maintaining binary compatibility.
 public class StringEncoderComparator implements Comparator {
 
     /**
@@ -35,13 +34,7 @@ public class StringEncoderComparator implements Comparator {
      */
     private final StringEncoder stringEncoder;
 
-    /**
-     * Constructs a new instance.
-     *
-     * @deprecated Creating an instance without a {@link StringEncoder} leads to a {@link NullPointerException}. Will be
-     *             removed in 2.0.
-     */
-    @Deprecated
+
     public StringEncoderComparator() {
         this.stringEncoder = null; // Trying to use this will cause things to break
     }
