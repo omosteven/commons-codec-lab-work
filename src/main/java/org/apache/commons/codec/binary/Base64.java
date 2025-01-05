@@ -667,7 +667,6 @@ public class Base64 extends BaseNCodec {
             this.encodeTable = encodeTable.clone();
             this.decodeTable = calculateDecodeTable(this.encodeTable);
         }
-        // TODO could be simplified if there is no requirement to reject invalid line sep when length <=0
         // @see test case Base64Test.testConstructors()
         if (lineSeparator != null) {
             final byte[] lineSeparatorCopy = lineSeparator.clone();
