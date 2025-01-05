@@ -75,8 +75,10 @@ public final class MurmurHash3 {
             switch (unprocessedLength) {
             case 3:
                 k1 ^= unprocessed[2] << 16;
+                // fall through
             case 2:
                 k1 ^= unprocessed[1] << 8;
+                // fall through
             case 1:
                 k1 ^= unprocessed[0];
 
@@ -85,6 +87,9 @@ public final class MurmurHash3 {
                 k1 = Integer.rotateLeft(k1, R1_32);
                 k1 *= C2_32;
                 result ^= k1;
+                break;
+            default:
+                break;
             }
 
             // finalization
@@ -249,8 +254,10 @@ public final class MurmurHash3 {
             switch (unprocessedLength) {
             case 3:
                 k1 ^= (unprocessed[2] & 0xff) << 16;
+                // fall through
             case 2:
                 k1 ^= (unprocessed[1] & 0xff) << 8;
+                // fall through
             case 1:
                 k1 ^= unprocessed[0] & 0xff;
 
@@ -259,6 +266,9 @@ public final class MurmurHash3 {
                 k1 = Integer.rotateLeft(k1, R1_32);
                 k1 *= C2_32;
                 result ^= k1;
+                break;
+            default:
+                break;
             }
 
             // finalization
@@ -513,43 +523,60 @@ public final class MurmurHash3 {
         switch (offset + length - index) {
         case 15:
             k2 ^= ((long) data[index + 14] & 0xff) << 48;
+            // fall through
         case 14:
             k2 ^= ((long) data[index + 13] & 0xff) << 40;
+            // fall through
         case 13:
             k2 ^= ((long) data[index + 12] & 0xff) << 32;
+            // fall through
         case 12:
             k2 ^= ((long) data[index + 11] & 0xff) << 24;
+            // fall through
         case 11:
             k2 ^= ((long) data[index + 10] & 0xff) << 16;
+            // fall through
         case 10:
             k2 ^= ((long) data[index + 9] & 0xff) << 8;
+            // fall through
         case 9:
             k2 ^= data[index + 8] & 0xff;
             k2 *= C2;
             k2 = Long.rotateLeft(k2, R3);
             k2 *= C1;
             h2 ^= k2;
+            // fall through
 
         case 8:
             k1 ^= ((long) data[index + 7] & 0xff) << 56;
+            // fall through
         case 7:
             k1 ^= ((long) data[index + 6] & 0xff) << 48;
+            // fall through
         case 6:
             k1 ^= ((long) data[index + 5] & 0xff) << 40;
+            // fall through
         case 5:
             k1 ^= ((long) data[index + 4] & 0xff) << 32;
+            // fall through
         case 4:
             k1 ^= ((long) data[index + 3] & 0xff) << 24;
+            // fall through
         case 3:
             k1 ^= ((long) data[index + 2] & 0xff) << 16;
+            // fall through
         case 2:
             k1 ^= ((long) data[index + 1] & 0xff) << 8;
+            // fall through
         case 1:
             k1 ^= data[index] & 0xff;
             k1 *= C1;
             k1 = Long.rotateLeft(k1, R1);
             k1 *= C2;
             h1 ^= k1;
+            break;
+        default:
+            break;
         }
 
         // finalization
@@ -672,8 +699,10 @@ public final class MurmurHash3 {
         switch (offset + length - index) {
         case 3:
             k1 ^= data[index + 2] << 16;
+            // fall through
         case 2:
             k1 ^= data[index + 1] << 8;
+            // fall through
         case 1:
             k1 ^= data[index];
 
@@ -682,6 +711,9 @@ public final class MurmurHash3 {
             k1 = Integer.rotateLeft(k1, R1_32);
             k1 *= C2_32;
             hash ^= k1;
+            break;
+        default:
+            break;
         }
 
         hash ^= length;
@@ -867,8 +899,10 @@ public final class MurmurHash3 {
         switch (offset + length - index) {
         case 3:
             k1 ^= (data[index + 2] & 0xff) << 16;
+            // fall through
         case 2:
             k1 ^= (data[index + 1] & 0xff) << 8;
+            // fall through
         case 1:
             k1 ^= data[index] & 0xff;
 
@@ -877,6 +911,9 @@ public final class MurmurHash3 {
             k1 = Integer.rotateLeft(k1, R1_32);
             k1 *= C2_32;
             hash ^= k1;
+            break;
+        default:
+            break;
         }
 
         hash ^= length;
@@ -997,22 +1034,31 @@ public final class MurmurHash3 {
         switch (offset + length - index) {
         case 7:
             k1 ^= ((long) data[index + 6] & 0xff) << 48;
+            // fall through
         case 6:
             k1 ^= ((long) data[index + 5] & 0xff) << 40;
+            // fall through
         case 5:
             k1 ^= ((long) data[index + 4] & 0xff) << 32;
+            // fall through
         case 4:
             k1 ^= ((long) data[index + 3] & 0xff) << 24;
+            // fall through
         case 3:
             k1 ^= ((long) data[index + 2] & 0xff) << 16;
+            // fall through
         case 2:
             k1 ^= ((long) data[index + 1] & 0xff) << 8;
+            // fall through
         case 1:
             k1 ^= (long) data[index] & 0xff;
             k1 *= C1;
             k1 = Long.rotateLeft(k1, R1);
             k1 *= C2;
             hash ^= k1;
+            break;
+        default:
+            break;
         }
 
         // finalization
