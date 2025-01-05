@@ -340,15 +340,6 @@ public abstract class BaseNCodec implements BinaryEncoder, BinaryDecoder {
         return CHUNK_SEPARATOR.clone();
     }
 
-    /**
-     * Checks if a byte value is whitespace or not.
-     * @param byteToCheck
-     *            the byte to check
-     * @return true if byte is whitespace, false otherwise
-     * @see Character#isWhitespace(int)
-     * @deprecated Use {@link Character#isWhitespace(int)}.
-     */
-    @Deprecated
     protected static boolean isWhiteSpace(final byte byteToCheck) {
         return Character.isWhitespace(byteToCheck);
     }
@@ -385,10 +376,6 @@ public abstract class BaseNCodec implements BinaryEncoder, BinaryDecoder {
         return array == null ? 0 : array.length;
     }
 
-    /**
-     * @deprecated Use {@link #pad}. Will be removed in 2.0.
-     */
-    @Deprecated
     protected final byte PAD = PAD_DEFAULT; // instance variable just in case it needs to vary later
 
     /** Pad byte. Instance variable just in case it needs to vary later. */

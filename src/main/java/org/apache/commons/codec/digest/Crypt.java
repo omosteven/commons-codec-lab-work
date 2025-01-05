@@ -173,12 +173,7 @@ public class Crypt {
         return crypt(key.getBytes(StandardCharsets.UTF_8), salt);
     }
 
-    /**
-     * TODO Make private in 2.0.
-     *
-     * @deprecated TODO Make private in 2.0.
-     */
-    @Deprecated
+
     public Crypt() {
         // empty
     }
