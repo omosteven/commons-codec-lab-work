@@ -23,6 +23,7 @@ import java.security.MessageDigest;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.logging.Logger;
 
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -84,7 +85,8 @@ public class Digest {
         // where '*' is used for binary files
         // shasum(1) has a -b option which generates " *" separator
         // we don't distinguish binary files at present
-        System.out.println(prefix + Hex.encodeHexString(digest) + (fileName != null ? "  " + fileName : ""));
+        final Logger logger = Logger.getLogger(getClass().getName());
+        logger.info(prefix + Hex.encodeHexString(digest) + (fileName != null ? "  " + fileName : ""));
     }
 
     private void run() throws IOException {

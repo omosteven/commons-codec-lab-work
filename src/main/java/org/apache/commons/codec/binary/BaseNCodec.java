@@ -376,7 +376,7 @@ public abstract class BaseNCodec implements BinaryEncoder, BinaryDecoder {
         return array == null ? 0 : array.length;
     }
 
-    protected final byte PAD = PAD_DEFAULT; // instance variable just in case it needs to vary later
+    protected final byte PAD = PAD_DEFAULT; // NOSONAR: PAD with no static is acceptable here. instance variable just in case it needs to vary later
 
     /** Pad byte. Instance variable just in case it needs to vary later. */
     protected final byte pad;
