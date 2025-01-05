@@ -45,7 +45,7 @@ jobs:
 
       # Upload JaCoCo HTML report with unique name
       - name: Upload JaCoCo HTML report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: jacoco-report-${{ github.run_id }}
           path: target/site/jacoco/index.html
