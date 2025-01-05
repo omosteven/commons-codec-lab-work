@@ -32,7 +32,7 @@ public class CharEncodingTest {
      * We could make the constructor private in the future, it's a matter a style.
      */
     @Test
-    private void testConstructor() {
+    public void testConstructor() {
         new CharEncoding();
     }
 
