@@ -81,7 +81,7 @@ Building
 Building requires a Java JDK and [Apache Maven](https://maven.apache.org/).
 The required Java version is found in the `pom.xml` as the `maven.compiler.source` property.
 
-From a command shell, run `mvn` without arguments to invoke the default Maven goal to run all tests and checks.
+From a command shell, run `mvn -Drat.skip=true package` without arguments to invoke the default Maven goal to run all tests and checks.
 
 Contributing
 ------------
@@ -91,8 +91,8 @@ There are some guidelines which will make applying PRs easier for us:
 + No tabs! Please use spaces for indentation.
 + Respect the existing code style for each file.
 + Create minimal diffs - disable on save actions like reformat source code or organize imports. If you feel the source code should be reformatted create a separate PR for this change.
-+ Provide JUnit tests for your changes and make sure your changes don't break any existing tests by running `mvn`.
-+ Before you pushing a PR, run `mvn` (by itself), this runs the default goal, which contains all build checks.
++ Provide JUnit tests for your changes and make sure your changes don't break any existing tests by running `mvn -Drat.skip=true package`.
++ Before you pushing a PR, run `mvn -Drat.skip=true package` (by itself), this runs the default goal, which contains all build checks.
 + To see the code coverage report, regardless of coverage failures, run `mvn clean site -Dcommons.jacoco.haltOnFailure=false`
 
 If you plan to contribute on a regular basis, please consider filing a [contributor license agreement](https://www.apache.org/licenses/#clas).
