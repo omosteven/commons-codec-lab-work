@@ -85,7 +85,7 @@ public class Base64 extends BaseNCodec {
 
         @Override
         public Base64 get() {
-            return new Base64(getLineLength(), getLineSeparator(), getPadding(), getEncodeTable(), getDecodingPolicy());
+            return new Base64(getLineLength(), super.getLineSeparator(), getPadding(), getEncodeTable(), getDecodingPolicy());
         }
 
         /**
@@ -694,12 +694,12 @@ public class Base64 extends BaseNCodec {
      * @return decodeTable
      */
     private byte[] calculateDecodeTable(final byte[] encodeTable) {
-        final byte[] decodeTable = new byte[DECODING_TABLE_LENGTH];
-        Arrays.fill(decodeTable, (byte) -1);
+        final byte[] decodedTable = new byte[DECODING_TABLE_LENGTH];
+        Arrays.fill(decodedTable, (byte) -1);
         for (int i = 0; i < encodeTable.length; i++) {
-            decodeTable[encodeTable[i]] = (byte) i;
+            decodedTable[encodeTable[i]] = (byte) i;
         }
-        return decodeTable;
+        return decodedTable;
     }
 
     /**
