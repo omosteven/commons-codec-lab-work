@@ -57,9 +57,7 @@ public class URLCodec implements BinaryEncoder, BinaryDecoder, StringEncoder, St
      * BitSet of www-form-url safe characters.
      * This is a copy of the internal BitSet which is now used for the conversion.
      * Changes to this field are ignored.
-     * @deprecated 1.11 Will be removed in 2.0 (CODEC-230)
      */
-    @Deprecated
     protected static final BitSet WWW_FORM_URL;
 
     private static final BitSet WWW_FORM_URL_SAFE = new BitSet(256);
@@ -165,9 +163,7 @@ public class URLCodec implements BinaryEncoder, BinaryDecoder, StringEncoder, St
     /**
      * The default charset used for string decoding and encoding.
      *
-     * @deprecated TODO: This field will be changed to a private final Charset in 2.0. (CODEC-126)
      */
-    @Deprecated
     protected volatile String charset; // added volatile: see CODEC-232
 
     /**
@@ -360,9 +356,7 @@ public class URLCodec implements BinaryEncoder, BinaryDecoder, StringEncoder, St
      * The {@code String} encoding used for decoding and encoding.
      *
      * @return Returns the encoding.
-     * @deprecated Use {@link #getDefaultCharset()}, will be removed in 2.0.
      */
-    @Deprecated
     public String getEncoding() {
         return this.charset;
     }
