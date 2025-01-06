@@ -69,6 +69,12 @@ limitations under the License.
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>org.pitest</groupId>
+      <artifactId>pitest-junit5-plugin</artifactId>
+      <version>1.2.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
       <scope>test</scope>
@@ -117,6 +123,39 @@ limitations under the License.
     <defaultGoal>clean verify apache-rat:check japicmp:cmp checkstyle:check javadoc:javadoc</defaultGoal>
     <pluginManagement>
       <plugins>
+        <plugin>
+          <groupId>org.pitest</groupId>
+          <artifactId>pitest-maven</artifactId>
+          <version>1.15.3</version> <!-- Use the latest version -->
+          <configuration>
+            <targetClasses>
+              <param>org.apache.commons.codec.*</param>
+            </targetClasses>
+            <targetTests>
+              <param>org.apache.commons.codec.*Test</param>
+            </targetTests>
+            <mutators>
+              <mutator>DEFAULTS</mutator>
+            </mutators>
+            <excludedMethods>
+              <excludedMethod>main</excludedMethod>
+            </excludedMethods>
+            <threads>4</threads>
+            <outputFormats>
+              <param>HTML</param>
+            </outputFormats>
+          </configuration>
+          <executions>
+            <execution>
+              <id>mutation-testing</id>
+              <phase>test</phase>
+              <goals>
+                <goal>mutationCoverage</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
         <plugin>
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
