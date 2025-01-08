@@ -11,3 +11,4 @@ target/
 .classpath
 .externalToolBuilders/*
 /commons-codec.iml
+tools/dependency-check
