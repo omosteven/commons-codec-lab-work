@@ -84,6 +84,21 @@ limitations under the License.
       <artifactId>junit-jupiter-params</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openjdk.jmh</groupId>
+      <artifactId>jmh-core</artifactId>
+      <version>1.37</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openjdk.jmh</groupId>
+      <artifactId>jmh-generator-annprocess</artifactId>
+      <version>1.37</version>
+    </dependency>
   </dependencies>
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -123,10 +138,11 @@ limitations under the License.
     <defaultGoal>clean verify apache-rat:check japicmp:cmp checkstyle:check javadoc:javadoc</defaultGoal>
     <pluginManagement>
       <plugins>
+
         <plugin>
           <groupId>org.pitest</groupId>
           <artifactId>pitest-maven</artifactId>
-          <version>1.15.3</version> <!-- Use the latest version -->
+          <version>1.15.3</version>
           <configuration>
             <targetClasses>
               <param>org.apache.commons.codec.*</param>
@@ -168,6 +184,11 @@ limitations under the License.
               </goals>
             </execution>
           </executions>
+          <configuration>
+            <excludes>
+              <exclude>org/apache/commons/codec/benchmark/**</exclude>
+            </excludes>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -215,6 +236,9 @@ limitations under the License.
             <exclude>src/test/resources/org/apache/commons/codec/small.bin</exclude>
             <exclude>Dockerfile</exclude>
             <exclude>.dockerignore</exclude>
+            <exclude>tools/**</exclude>
+            <exclude>results/**</exclude>
+            <exclude>.github/**</exclude>
           </excludes>
         </configuration>
       </plugin>
@@ -319,6 +343,21 @@ limitations under the License.
       <plugin>
         <groupId>com.github.spotbugs</groupId>
         <artifactId>spotbugs-maven-plugin</artifactId>
+        <version>4.0.4</version>
+        <configuration>
+          <effort>Max</effort>
+          <threshold>medium</threshold>
+          <failOnError>true</failOnError>
+          <includeFilterFile>${basedir}/src/conf/spotbugs-include-filter.xml</includeFilterFile>
+          <excludeFilterFile>${basedir}/src/conf/spotbugs-exclude-filter.xml</excludeFilterFile>
+          <plugins>
+            <plugin>
+              <groupId>com.h3xstream.findsecbugs</groupId>
+              <artifactId>findsecbugs-plugin</artifactId>
+              <version>1.12.0</version>
+            </plugin>
+          </plugins>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -339,6 +378,35 @@ limitations under the License.
     </plugins>
   </reporting>
   <profiles>
+    <profile>
+      <id>benchmark</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>3.1.1</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>compile</goal>
+                  <goal>benchmark</goal>
+                </goals>
+                <configuration>
+                  <executable>java</executable>
+                  <arguments>
+                    <argument>-cp</argument>
+                    <argument>${project.build.outputDirectory}</argument>
+                    <argument>org.openjdk.jmh.Main</argument>
+                    <argument>org.apache.commons.codec.jmh.CodecBenchmark</argument>
+                  </arguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
     <profile>
 	  <!-- Java 8 only -->
       <id>java-8</id>
